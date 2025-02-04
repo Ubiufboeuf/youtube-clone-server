@@ -1,8 +1,13 @@
 import express from 'express'
 
 const app = express()
-const PORT = 3000 ?? process.env.PORT
+const PORT = 1234 ?? process.env.PORT
 const DIR = process.cwd()
+
+app.get('/get', (req, res) => {
+  console.log('get')
+  res.send('get')
+})
 
 app.post('/create', (req, res) => {
   let body = ''
@@ -13,5 +18,5 @@ app.post('/create', (req, res) => {
   res.send('listo, body:', body)
 })
 
-app.use('/', express.static(DIR))
+// app.use('/', express.static(DIR))
 app.listen(PORT, () => `server on port:${PORT}`)
